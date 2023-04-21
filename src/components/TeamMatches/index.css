@@ -1,0 +1,7 @@
+/* Write your CSS here */
+.app-team-matches-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
