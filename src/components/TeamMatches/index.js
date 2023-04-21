@@ -34,6 +34,7 @@ class TeamMatches extends Component {
         matchStatus: fetchedDate.latest_match_details.match_status,
         result: fetchedDate.latest_match_details.result,
         secondInnings: fetchedDate.latest_match_details.second_innings,
+        umpires: fetchedDate.latest_match_details.umpires
         venue: fetchedDate.latest_match_details.venue,
       },
       recentMatches: fetchedDate.recent_matches.map(recentMatch => ({
