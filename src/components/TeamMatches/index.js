@@ -8,7 +8,7 @@ import MatchCard from '../MatchCard'
 
 class TeamMatches extends Component {
   state = {
-    matchesData: []
+    matchesData: [],
     isLoading: true,
   }
 
