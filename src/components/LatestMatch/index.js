@@ -4,7 +4,7 @@ import {Component} from 'react'
 
 class LatestMatch extends Component {
   render() {
-    const {LatestMatch} = this.props
+    const {latestMatch} = this.props
     const {
       competingTeam,
       competingTeamLogo,
@@ -45,8 +45,8 @@ class LatestMatch extends Component {
             <div className="match-info-item">
               <p className="latest-match-details-label">Man of The Match</p>
               <p className="latest-match-details-value">{manOfTheMatch}</p>
-          </div>
-          <div className="match-info-item">
+            </div>
+            <div className="match-info-item">
               <p className="latest-match-details-label">Umpires</p>
               <p className="latest-match-details-value">{umpires}</p>
             </div>
