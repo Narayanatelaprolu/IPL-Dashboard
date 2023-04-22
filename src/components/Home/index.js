@@ -8,38 +8,38 @@ import TeamCard from '../TeamCard'
 class Home extends Component {
   /** the state method saves data obtained from url https://apis.ccbp.in/ipl */
   state = {
-    teamDate: [],
+    teamsData: [],
     isLoading: true,
   }
 
   componentDidMount() {
-    this.getTeamList()
+    this.getTeamsList()
   }
 
-  getTeamList = async () => {
+  getTeamsList = async () => {
     const response = await fetch('https://apis.ccbp.in/ipl')
-    const fetchDate = await response.json()
-    const updatedDate = fetchDate.teams.map(eachDate => ({
-      name: eachDate.name, 
-      imageUrl: eachDate.team_image_Url,
-      id: eachDate.id,
+    const fetchData = await response.json()
+    const updatedData = fetchData.teams.map(eachData => ({
+      name: eachData.name, 
+      imageUrl: eachData.team_image_url,
+      id: eachData.id,
     }))
-    this.setState({teamsDate: updatedDate, isLoading: false})
+    this.setState({teamsData: updatedData, isLoading: false})
   }
 
   renderTeamsList = () => {
-    const {teamsDate} = this.state
+    const {teamsData} = this.state
     return(
       <ul className="team-list-items">
-        {teamsDate.map(team => (
-          <TeamCard key={team.id} teamDate={team} />
+        {teamsData.map(team => (
+          <TeamCard key={team.id} teamData={team} />
         ))}
       </ul>
     )
   }
 
   renderLoader = () => (
-    <div testid="Loader" className="loader-container">
+    <div testid="loader" className="loader-container">
       <Loader type="Rings" color="#00BFFF" height={80} width={80} />
     </div>
   )
