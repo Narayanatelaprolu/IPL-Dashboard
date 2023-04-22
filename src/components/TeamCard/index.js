@@ -7,7 +7,7 @@ class TeamCard extends Component {
   render() {
     const {teamData} = this.props
     const {name, imageUrl, id} = teamData
-    return(
+    return (
       <Link to={`/team-matches/${id}`} className="link-item">
         <li className="team-card">
           <img className="team-card-image" src={imageUrl} alt={`${name}`} />
