@@ -8,7 +8,7 @@ import MatchCard from '../MatchCard'
 
 class TeamMatches extends Component {
   state = {
-    matchesDate: []
+    matchesData: []
     isLoading: true,
   }
 
@@ -21,23 +21,23 @@ class TeamMatches extends Component {
     const {params} = match
     const {id} = params
     const response = await fetch(`https://apis.ccbp.in/ipl/${id}`)
-    const fetchedDate = await response.json()
-    const updatedDate = {
-      teamBannerUrl: fetchedDate.team_banner_url,
+    const fetchedData = await response.json()
+    const updatedData = {
+      teamBannerUrl: fetchedData.team_banner_url,
       latestMatchDetails: {
-        id: fetchedDate.latest_match_details.id,
-        competingTeam: fetchedDate.latest_match_details.Component_team,
-        competingTeamLogo: fetchedDate.latest_match_details.competing_Team_logo,
-        date: fetchedDate.latest_match_date,
-        firstInnings: fetchedDate.latest_match_details.first_innings,
-        manOfTheMatch: fetchedDate.latest_match_details.man_of_the_match,
-        matchStatus: fetchedDate.latest_match_details.match_status,
-        result: fetchedDate.latest_match_details.result,
-        secondInnings: fetchedDate.latest_match_details.second_innings,
-        umpires: fetchedDate.latest_match_details.umpires
-        venue: fetchedDate.latest_match_details.venue,
+        id: fetchedData.latest_match_details.id,
+        competingTeam: fetchedData.latest_match_details.Component_team,
+        competingTeamLogo: fetchedData.latest_match_details.competing_Team_logo,
+        date: fetchedData.latest_match_details.date,
+        firstInnings: fetchedData.latest_match_details.first_innings,
+        manOfTheMatch: fetchedData.latest_match_details.man_of_the_match,
+        matchStatus: fetchedData.latest_match_details.match_status,
+        result: fetchedData.latest_match_details.result,
+        secondInnings: fetchedData.latest_match_details.second_innings,
+        umpires: fetchedData.latest_match_details.umpires
+        venue: fetchedData.latest_match_details.venue,
       },
-      recentMatches: fetchedDate.recent_matches.map(recentMatch => ({
+      recentMatches: fetchedData.recent_matches.map(recentMatch => ({
         umpires: recentMatch.umpires,
         result: recentMatch.result,
         manOfTheMatch: recentMatch.man_of_the_match,
@@ -51,12 +51,12 @@ class TeamMatches extends Component {
         matchStatus: recentMatch.match_status,
       })),
     }
-    this.setState({matchesDate: updatedDate, isLoading: false})
+    this.setState({matchesData: updatedData, isLoading: false})
   }
 
   renderTeamMatches = () => {
-    const {matchesDate} = this.state
-    const {teamBannerUrl, latestMatchDetails} = matchesDate
+    const {matchesData} = this.state
+    const {teamBannerUrl, latestMatchDetails} = matchesData
     return (
       <div className="team-matches-container">
         <img src={teamBannerUrl} alt="team banner" className="team-banner" />
@@ -67,12 +67,12 @@ class TeamMatches extends Component {
   }
 
   renderRecentMatchesList = () => {
-    const {matchesDate} this.state
-    const {recentMatches} = matchesDate
+    const {matchesData} this.state
+    const {recentMatches} = matchesData
     return (
       <ul className="recent-matches-list">
         {recentMatches.map(eachMatch => (
-          <MatchCard matchDate={eachMatch} key={eachMatch.id} />
+          <MatchCard matchData={eachMatch} key={eachMatch.id} />
         ))}
       </ul>
     )
