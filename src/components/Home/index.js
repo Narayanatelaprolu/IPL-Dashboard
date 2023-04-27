@@ -20,7 +20,7 @@ class Home extends Component {
     const response = await fetch('https://apis.ccbp.in/ipl')
     const fetchData = await response.json()
     const updatedData = fetchData.teams.map(eachData => ({
-      name: eachData.name, 
+      name: eachData.name,
       imageUrl: eachData.team_image_url,
       id: eachData.id,
     }))
@@ -29,7 +29,7 @@ class Home extends Component {
 
   renderTeamsList = () => {
     const {teamsData} = this.state
-    return(
+    return (
       <ul className="team-list-items">
         {teamsData.map(team => (
           <TeamCard key={team.id} teamData={team} />
@@ -46,7 +46,7 @@ class Home extends Component {
 
   render() {
     const {isLoading} = this.state
-    return(
+    return (
       <div className="app-container">
         <div className="ipl-container">
           <div className="header-container">

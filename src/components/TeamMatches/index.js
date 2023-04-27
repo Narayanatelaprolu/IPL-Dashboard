@@ -26,15 +26,15 @@ class TeamMatches extends Component {
       teamBannerUrl: fetchedData.team_banner_url,
       latestMatchDetails: {
         id: fetchedData.latest_match_details.id,
-        competingTeam: fetchedData.latest_match_details.Component_team,
-        competingTeamLogo: fetchedData.latest_match_details.competing_Team_logo,
+        competingTeam: fetchedData.latest_match_details.competing_team,
+        competingTeamLogo: fetchedData.latest_match_details.competing_team_logo,
         date: fetchedData.latest_match_details.date,
         firstInnings: fetchedData.latest_match_details.first_innings,
         manOfTheMatch: fetchedData.latest_match_details.man_of_the_match,
         matchStatus: fetchedData.latest_match_details.match_status,
         result: fetchedData.latest_match_details.result,
         secondInnings: fetchedData.latest_match_details.second_innings,
-        umpires: fetchedData.latest_match_details.umpires
+        umpires: fetchedData.latest_match_details.umpires,
         venue: fetchedData.latest_match_details.venue,
       },
       recentMatches: fetchedData.recent_matches.map(recentMatch => ({
@@ -45,7 +45,7 @@ class TeamMatches extends Component {
         date: recentMatch.date,
         venue: recentMatch.venue,
         competingTeam: recentMatch.competing_team,
-        competingTeamLogo: recentMatch.component_team_logo,
+        competingTeamLogo: recentMatch.competing_team_logo,
         firstInning: recentMatch.first_innings,
         secondInnings: recentMatch.second_innings,
         matchStatus: recentMatch.match_status,
@@ -67,7 +67,7 @@ class TeamMatches extends Component {
   }
 
   renderRecentMatchesList = () => {
-    const {matchesData} this.state
+    const {matchesData} = this.state
     const {recentMatches} = matchesData
     return (
       <ul className="recent-matches-list">
@@ -78,7 +78,7 @@ class TeamMatches extends Component {
     )
   }
 
-  renderLoader = () => {
+  renderLoader = () => (
     <div testid="loader" className="loader-container">
       <Loader type="BallTriangle" color="#00BFFF" height={80} width={80} />
     </div>
@@ -98,5 +98,3 @@ class TeamMatches extends Component {
 }
 
 export default TeamMatches
-
-
